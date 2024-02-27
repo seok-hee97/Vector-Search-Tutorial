@@ -1,11 +1,18 @@
 import pymongo
 import os
 import requests
+from dotenv import load_dotenv
 
+load_dotenv()
 
 hf_token = os.environ["HF_TOKEN"]
+print("hf_token : ", hf_token)
+
 password = os.environ["MongoDB_PASSWORD"]
+print("password : ", password)
+# client = pymongo.MongoClient(f"mongodb+srv://cycloevan97:{password}@cluster0.uajphwm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 client = pymongo.MongoClient(f"mongodb+srv://cycloevan97:{password}@cluster0.uajphwm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+
 db = client.sample_mflix
 collection =db.movices
 
@@ -25,11 +32,10 @@ def generate_embedding(text: str) -> list[float]:
 
   return response.json()
 
-print(generate_embedding("freeCodeCamp is awesome"))
 
-# for doc in collection.find({'plot':{"$exists": True}}).limit(50):
-#   doc['plot_embedding_hf'] = generate_embedding(doc['plot'])
-#   collection.replace_one({'_id': doc['_id']}, doc)
+for doc in collection.find({'plot':{"$exists": True}}).limit(50):
+  doc['plot_embedding_hf'] = generate_embedding(doc['plot'])
+  collection.replace_one({'_id': doc['_id']}, doc)
 
 # query = "imaginary characters from outer space at war"
 
