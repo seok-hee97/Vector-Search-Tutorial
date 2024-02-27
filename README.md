@@ -1,9 +1,14 @@
-# Vector Search RAG Tutorial
+# Vector Search RAG(Retrieval Augmented Generation) Tutorial
 
 Learn how to use vector search and embeddings to easily combine your data with large language models like GPT-4.    
 You will first learn the concepts and then create three projects.     
 
 ![img](fig/fig1.png)
+
+
+```
+pip install pymongo
+```
 
 
 
