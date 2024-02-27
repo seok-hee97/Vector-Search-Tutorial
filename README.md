@@ -16,6 +16,17 @@ pip install pymongo
 
 
 
+## Project 2: RAG with Atlas Vector Search, LangChain, OpenAI
+
+#### LLM Limitations
+- Hallucinations
+- Static data set
+- No local data
+- Token limit
+
+![img](fig/fig2.png)
+
+
 
 ## Reference     
 - [Vector Search RAG Tutorial](https://www.youtube.com/watch?v=JEBDfGqrAUA)
